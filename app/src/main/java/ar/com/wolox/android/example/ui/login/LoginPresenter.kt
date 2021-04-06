@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class LoginPresenter @Inject constructor(private val userSession: UserSession) : BasePresenter<LoginView>() {
 
-    fun onInit() {
+    override fun onViewAttached() {
         userSession.email?.let {
             view?.completeCredentials(it.toString(), userSession.password.toString())
         }

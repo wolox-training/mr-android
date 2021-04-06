@@ -12,7 +12,7 @@ class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), Log
     override fun layout() = R.layout.fragment_login
 
     override fun init() {
-        presenter.onInit()
+        presenter.onViewAttached()
     }
 
     override fun setListeners() {
