@@ -86,6 +86,7 @@
             android:text="@string/terms_and_condition_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:clickable="true"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -12,4 +12,8 @@ interface LoginView {
     fun showEmptyPasswordError()
 
     fun goToHome()
+
+    fun goToSignup()
+
+    fun openTerms(url: String)
 }

@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class LoginPresenter @Inject constructor(private val userSession: UserSession) : BasePresenter<LoginView>() {
 
-    override fun onViewAttached() {
+    fun onInit() {
         userSession.email?.let {
             view?.completeCredentials(it.toString(), userSession.password.toString())
         }
@@ -28,5 +28,13 @@ class LoginPresenter @Inject constructor(private val userSession: UserSession) :
             view?.showInvalidEmailError()
         }
         if (!loginError) view?.logInUser()
+    }
+
+    fun onSignupButtonClicked() = view?.goToSignup()
+
+    fun onTermsClicked() = view?.openTerms(WOLOX_URL)
+
+    companion object {
+        private const val WOLOX_URL = "www.wolox.com.ar"
     }
 }
