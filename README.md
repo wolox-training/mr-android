@@ -1,1 +1,1 @@
-# mr-android
+android-training

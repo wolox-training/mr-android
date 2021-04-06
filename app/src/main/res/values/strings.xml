@@ -20,5 +20,6 @@
     <string name="password_login">Password</string>
     <string name='sign_up_login'>Sign Up</string>
     <string name="terms_and_condition_text">By joining you agree to our <u>Terms &amp; conditions</u></string>
-
+    <string name="field_required">Field Required</string>
+    <string name="invalid_email_address"> Invalid email address</string>
 </resources>
