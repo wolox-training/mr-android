@@ -51,7 +51,7 @@
             android:layout_marginVertical="@dimen/spacing_large"
             android:layout_marginHorizontal="@dimen/spacing_large"
             android:hint="@string/password_login"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:maxLines="1"
             app:layout_constraintTop_toBottomOf="@id/emailInput"/>
 

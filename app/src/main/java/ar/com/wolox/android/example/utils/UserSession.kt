@@ -19,4 +19,25 @@ class UserSession @Inject constructor(private val sharedPreferencesManager: Shar
             field = username
             sharedPreferencesManager.store(Extras.UserLogin.USERNAME, username)
         }
+
+    var email: String? = null
+        get() = field ?: sharedPreferencesManager[Extras.UserLogin.EMAIL, null].also {
+            field = it
+        }
+        set(email) {
+            field = email
+            sharedPreferencesManager.store(Extras.UserLogin.EMAIL, email)
+        }
+
+    var password: String? = null
+        get() = field ?: sharedPreferencesManager[Extras.UserLogin.PASSWORD, null].also {
+            field = it
+        }
+        set(email) {
+            field = email
+            sharedPreferencesManager.store(Extras.UserLogin.PASSWORD, email)
+        }
+
+    var isUserLogged: Boolean? = false
+        get() = !email.isNullOrEmpty() && !password.isNullOrEmpty()
 }
