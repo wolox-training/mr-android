@@ -18,7 +18,7 @@ class SignupFragment : WolmoFragment<FragmentSignupBinding, SignupPresenter>(), 
         }
     }
 
-    override fun goToLogin() = LoginActivity.start(requireContext())
+    override fun goToLogin() = requireActivity().onBackPressed()
 
     companion object {
         fun newInstance() = SignupFragment()
