@@ -29,4 +29,12 @@ class LoginPresenter @Inject constructor(private val userSession: UserSession) :
         }
         if (!loginError) view?.logInUser()
     }
+
+    fun onSignupButtonClicked() = view?.goToSignup()
+
+    fun onTermsClicked() = view?.openTerms(WOLOX_URL)
+
+    companion object {
+        private const val WOLOX_URL = "www.wolox.com.ar"
+    }
 }

@@ -3,7 +3,9 @@ package ar.com.wolox.android.example.ui.login
 import ar.com.wolox.android.R
 import ar.com.wolox.android.databinding.FragmentLoginBinding
 import ar.com.wolox.android.example.ui.home.HomeActivity
+import ar.com.wolox.android.example.ui.signup.SignupActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
+import ar.com.wolox.wolmo.core.util.openBrowser
 
 class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), LoginView {
 
@@ -17,6 +19,12 @@ class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), Log
         with(binding) {
             loginButton.setOnClickListener {
                 presenter.onLoginButtonClicked(emailInput.text.toString(), passwordInput.text.toString())
+            }
+            signupButton.setOnClickListener {
+                presenter.onSignupButtonClicked()
+            }
+            termsText.setOnClickListener {
+                presenter.onTermsClicked()
             }
         }
     }
@@ -43,6 +51,10 @@ class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), Log
     }
 
     override fun goToHome() = HomeActivity.start(requireContext())
+
+    override fun goToSignup() = SignupActivity.start(requireContext())
+
+    override fun openTerms(url: String) = requireContext().openBrowser(url)
 
     companion object {
         fun newInstance() = LoginFragment()
