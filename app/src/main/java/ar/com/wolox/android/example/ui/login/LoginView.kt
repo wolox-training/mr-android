@@ -3,9 +3,13 @@ package ar.com.wolox.android.example.ui.login
 interface LoginView {
     fun logInUser()
 
+    fun logInError()
+
     fun showEmptyEmailError()
 
     fun showInvalidEmailError()
+
+    fun showEmptyPasswordAndEmailError()
 
     fun completeCredentials(email: String, password: String)
 

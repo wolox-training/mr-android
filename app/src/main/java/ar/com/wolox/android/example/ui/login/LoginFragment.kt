@@ -5,9 +5,13 @@ import ar.com.wolox.android.databinding.FragmentLoginBinding
 import ar.com.wolox.android.example.ui.home.HomeActivity
 import ar.com.wolox.android.example.ui.signup.SignupActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
+import ar.com.wolox.wolmo.core.util.ToastFactory
 import ar.com.wolox.wolmo.core.util.openBrowser
+import javax.inject.Inject
 
 class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), LoginView {
+
+    @Inject internal lateinit var toastFactory: ToastFactory
 
     override fun layout() = R.layout.fragment_login
 
@@ -31,8 +35,12 @@ class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), Log
 
     override fun logInUser() = HomeActivity.start(requireContext())
 
+    override fun logInError() {
+        toastFactory.show(R.string.incorrect_email_password)
+    }
+
     override fun showEmptyEmailError() {
-            binding.emailInput.error = getString(R.string.field_required)
+        binding.emailInput.error = getString(R.string.field_required)
     }
 
     override fun showEmptyPasswordError() {
@@ -41,6 +49,10 @@ class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), Log
 
     override fun showInvalidEmailError() {
         binding.emailInput.error = getString(R.string.invalid_email_address)
+    }
+
+    override fun showEmptyPasswordAndEmailError() {
+        binding.emailInput.error = getString(R.string.all_fields_required)
     }
 
     override fun completeCredentials(email: String, password: String) {

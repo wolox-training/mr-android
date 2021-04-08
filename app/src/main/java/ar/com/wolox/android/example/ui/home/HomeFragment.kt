@@ -9,6 +9,11 @@ class HomeFragment private constructor() : WolmoFragment<FragmentHomeBinding, Ho
     override fun layout() = R.layout.fragment_home
 
     override fun init() {
+        presenter.onViewAttached()
+    }
+
+    override fun replaceEmail(email: String) {
+        binding.EmailText.text = email
     }
 
     companion object {

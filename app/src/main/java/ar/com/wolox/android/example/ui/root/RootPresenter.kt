@@ -7,7 +7,7 @@ import javax.inject.Inject
 class RootPresenter @Inject constructor(private val userSession: UserSession) : BasePresenter<RootView>() {
 
     override fun onViewAttached() {
-        if (userSession.isUserLogged!!) {
+        if (userSession.isOngoingSession!!) {
             view?.goToHome()
         } else {
             view?.goToLogin()
