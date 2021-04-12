@@ -23,18 +23,14 @@ class LoginPresenter @Inject constructor(
         userSession.password = password
         if (password.isBlank() && email.isBlank()) {
             view?.showEmptyPasswordAndEmailError()
-            return@launch
         }
         if (password.isBlank()) {
             view?.showEmptyPasswordError()
-            return@launch
         }
         if (email.isBlank()) {
             view?.showEmptyEmailError()
-            return@launch
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             view?.showInvalidEmailError()
-            return@launch
         }
         val user = Login(email = email, password = password)
         networkRequest(userRepository.loginUser(user)) {

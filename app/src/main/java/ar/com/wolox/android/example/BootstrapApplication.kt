@@ -21,7 +21,6 @@ class BootstrapApplication : WolmoApplication() {
     lateinit var userSession: UserSession
 
     override fun onInit() {
-        // Initialize Application stuff here
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.

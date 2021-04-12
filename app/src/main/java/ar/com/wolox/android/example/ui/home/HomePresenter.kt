@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class HomePresenter @Inject constructor(private val userSession: UserSession) : BasePresenter<HomeView>() {
     override fun onViewAttached() {
-        userSession.accessToken?.let {
+        userSession.email?.let {
             view?.replaceEmail(it.toString())
         }
     }
