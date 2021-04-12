@@ -3,7 +3,11 @@ package ar.com.wolox.android.example.ui.login
 interface LoginView {
     fun logInUser()
 
-    fun logInError()
+    fun showLoginError()
+
+    fun showConnectionError()
+
+    fun showLoginLoading()
 
     fun showEmptyEmailError()
 
