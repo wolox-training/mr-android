@@ -7,6 +7,7 @@ import ar.com.wolox.android.example.utils.UserSession
 import ar.com.wolox.wolmo.core.presenter.CoroutineBasePresenter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 class LoginPresenter @Inject constructor(
     private val userSession: UserSession,
     private val userRepository: UserRepository
@@ -21,21 +22,30 @@ class LoginPresenter @Inject constructor(
     fun onLoginButtonClicked(email: String, password: String) = launch {
         userSession.email = email
         userSession.password = password
+        var loginError = false
         if (password.isBlank() && email.isBlank()) {
+            loginError = true
             view?.showEmptyPasswordAndEmailError()
         }
         if (password.isBlank()) {
+            loginError = true
             view?.showEmptyPasswordError()
         }
         if (email.isBlank()) {
+            loginError = true
             view?.showEmptyEmailError()
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            loginError = true
             view?.showInvalidEmailError()
         }
         val user = Login(email = email, password = password)
-        networkRequest(userRepository.loginUser(user)) {
-            onResponseSuccessful { _ -> view?.logInUser() }
-            onResponseFailed { _, _ -> view?.logInError() }
+        if (!loginError) {
+            view?.showLoginLoading()
+            networkRequest(userRepository.loginUser(user)) {
+                onResponseSuccessful { _ -> view?.logInUser() }
+                onResponseFailed { _, _ -> view?.showLoginError() }
+                onCallFailure { view?.showConnectionError() }
+            }
         }
     }
 

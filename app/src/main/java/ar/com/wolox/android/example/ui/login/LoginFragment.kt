@@ -1,6 +1,6 @@
 package ar.com.wolox.android.example.ui.login
 
-import android.widget.Toast
+import android.view.View
 import ar.com.wolox.android.R
 import ar.com.wolox.android.databinding.FragmentLoginBinding
 import ar.com.wolox.android.example.ui.home.HomeActivity
@@ -12,7 +12,8 @@ import javax.inject.Inject
 
 class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), LoginView {
 
-    @Inject internal lateinit var toastFactory: ToastFactory
+    @Inject
+    internal lateinit var toastFactory: ToastFactory
 
     override fun layout() = R.layout.fragment_login
 
@@ -34,10 +35,23 @@ class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), Log
         }
     }
 
-    override fun logInUser() = HomeActivity.start(requireContext())
+    override fun logInUser() {
+        binding.indeterminateBar.visibility = View.GONE
+        HomeActivity.start(requireContext())
+    }
 
-    override fun logInError() {
+    override fun showLoginError() {
+        binding.indeterminateBar.visibility = View.GONE
         toastFactory.show(R.string.incorrect_email_password)
+    }
+
+    override fun showConnectionError() {
+        binding.indeterminateBar.visibility = View.GONE
+        toastFactory.show(R.string.no_connection)
+    }
+
+    override fun showLoginLoading() {
+        binding.indeterminateBar.visibility = View.VISIBLE
     }
 
     override fun showEmptyEmailError() {
