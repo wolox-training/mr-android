@@ -1,10 +1,16 @@
 package ar.com.wolox.android.example.ui.login
 
+import ar.com.wolox.android.example.model.Login
+import ar.com.wolox.android.example.network.builder.networkRequest
+import ar.com.wolox.android.example.network.repository.UserRepository
 import ar.com.wolox.android.example.utils.UserSession
-import ar.com.wolox.wolmo.core.presenter.BasePresenter
+import ar.com.wolox.wolmo.core.presenter.CoroutineBasePresenter
+import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-class LoginPresenter @Inject constructor(private val userSession: UserSession) : BasePresenter<LoginView>() {
+class LoginPresenter @Inject constructor(
+    private val userSession: UserSession,
+    private val userRepository: UserRepository
+) : CoroutineBasePresenter<LoginView>() {
 
     override fun onViewAttached() {
         userSession.email?.let {
@@ -12,22 +18,25 @@ class LoginPresenter @Inject constructor(private val userSession: UserSession) :
         }
     }
 
-    fun onLoginButtonClicked(email: String, password: String) {
+    fun onLoginButtonClicked(email: String, password: String) = launch {
         userSession.email = email
         userSession.password = password
-        var loginError = false
+        if (password.isBlank() && email.isBlank()) {
+            view?.showEmptyPasswordAndEmailError()
+        }
         if (password.isBlank()) {
-            loginError = true
             view?.showEmptyPasswordError()
         }
         if (email.isBlank()) {
-            loginError = true
             view?.showEmptyEmailError()
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            loginError = true
             view?.showInvalidEmailError()
         }
-        if (!loginError) view?.logInUser()
+        val user = Login(email = email, password = password)
+        networkRequest(userRepository.loginUser(user)) {
+            onResponseSuccessful { _ -> view?.logInUser() }
+            onResponseFailed { _, _ -> view?.logInError() }
+        }
     }
 
     fun onSignupButtonClicked() = view?.goToSignup()

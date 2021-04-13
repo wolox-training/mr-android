@@ -2,7 +2,6 @@ package ar.com.wolox.android.example.ui.signup
 
 import ar.com.wolox.android.R
 import ar.com.wolox.android.databinding.FragmentSignupBinding
-import ar.com.wolox.android.example.ui.login.LoginActivity
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 
 class SignupFragment : WolmoFragment<FragmentSignupBinding, SignupPresenter>(), SignupView {

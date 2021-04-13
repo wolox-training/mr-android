@@ -11,6 +11,10 @@ class HomeFragment private constructor() : WolmoFragment<FragmentHomeBinding, Ho
     override fun init() {
     }
 
+    override fun replaceEmail(email: String) {
+        binding.EmailText.text = email
+    }
+
     companion object {
         fun newInstance() = HomeFragment()
     }
