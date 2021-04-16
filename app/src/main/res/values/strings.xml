@@ -26,4 +26,7 @@
     <string name="back"> Back </string>
     <string name="incorrect_email_password"> Incorrect email or password</string>
     <string name="no_connection"> Internet connection required to login</string>
+    <string name="news_tab">News</string>
+    <string name="user_tab">Profile</string>
+    <string name="wolox_label">Wolox</string>
 </resources>
