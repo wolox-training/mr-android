@@ -29,8 +29,8 @@ class ViewPagerFragment private constructor() : WolmoFragment<FragmentViewpagerB
     override fun init() {
         binding.viewPager.adapter = SimpleFragmentPagerAdapter(childFragmentManager).apply {
             addFragments(
-                randomFragment.get() to "Page 1",
-                requestFragment to "Page 2")
+                    randomFragment.get() to "Page 1",
+                    requestFragment to "Page 2")
         }
         presenter.onInit(requireArgument(FAVOURITE_COLOR_KEY))
     }

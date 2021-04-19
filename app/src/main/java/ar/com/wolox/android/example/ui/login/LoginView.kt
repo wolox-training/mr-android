@@ -7,7 +7,7 @@ interface LoginView {
 
     fun showConnectionError()
 
-    fun showLoginLoading()
+    fun toggleProgressBarPresence(isPresent: Boolean)
 
     fun showEmptyEmailError()
 
