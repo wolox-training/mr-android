@@ -36,22 +36,15 @@ class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), Log
     }
 
     override fun logInUser() {
-        binding.indeterminateBar.visibility = View.GONE
         HomeActivity.start(requireContext())
     }
 
     override fun showLoginError() {
-        binding.indeterminateBar.visibility = View.GONE
         toastFactory.show(R.string.incorrect_email_password)
     }
 
     override fun showConnectionError() {
-        binding.indeterminateBar.visibility = View.GONE
         toastFactory.show(R.string.no_connection)
-    }
-
-    override fun showLoginLoading() {
-        binding.indeterminateBar.visibility = View.VISIBLE
     }
 
     override fun showEmptyEmailError() {
@@ -82,6 +75,12 @@ class LoginFragment : WolmoFragment<FragmentLoginBinding, LoginPresenter>(), Log
     override fun goToSignup() = SignupActivity.start(requireContext())
 
     override fun openTerms(url: String) = requireContext().openBrowser(url)
+
+    override fun toggleProgressBarPresence(isPresent: Boolean) {
+        with(binding.indeterminateBar) {
+            visibility = if (isPresent) View.VISIBLE else View.GONE
+        }
+    }
 
     companion object {
         fun newInstance() = LoginFragment()

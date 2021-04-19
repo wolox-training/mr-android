@@ -40,11 +40,20 @@ class LoginPresenter @Inject constructor(
         }
         val user = Login(email = email, password = password)
         if (!loginError) {
-            view?.showLoginLoading()
+            view?.toggleProgressBarPresence(true)
             networkRequest(userRepository.loginUser(user)) {
-                onResponseSuccessful { _ -> view?.logInUser() }
-                onResponseFailed { _, _ -> view?.showLoginError() }
-                onCallFailure { view?.showConnectionError() }
+                onResponseSuccessful {
+                    view?.logInUser()
+                    view?.toggleProgressBarPresence(false)
+                }
+                onResponseFailed { _, _ ->
+                    view?.showLoginError()
+                    view?.toggleProgressBarPresence(false)
+                }
+                onCallFailure {
+                    view?.showConnectionError()
+                    view?.toggleProgressBarPresence(false)
+                }
             }
         }
     }
