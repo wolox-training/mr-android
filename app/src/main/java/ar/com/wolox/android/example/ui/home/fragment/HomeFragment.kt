@@ -33,12 +33,16 @@ class HomeFragment private constructor() : WolmoFragment<FragmentHomeBinding, Ho
             TabLayoutMediator(tabLayout, pager) { tab, position ->
                 when (position) {
                     0 -> {
-                        tab.text = getString(R.string.news_tab)
-                        tab.setIcon(R.drawable.ic_news_list)
+                        with(tab) {
+                            text = getString(R.string.news_tab)
+                            setIcon(R.drawable.ic_news_list)
+                        }
                     }
                     1 -> {
-                        tab.text = getString(R.string.user_tab)
-                        tab.setIcon(R.drawable.ic_profile)
+                        with(tab) {
+                            text = getString(R.string.user_tab)
+                            setIcon(R.drawable.ic_profile)
+                        }
                     }
                 }
             }.attach()

@@ -44,16 +44,14 @@ class LoginPresenter @Inject constructor(
             networkRequest(userRepository.loginUser(user)) {
                 onResponseSuccessful {
                     view?.logInUser()
-                    view?.toggleProgressBarPresence(false)
                 }
                 onResponseFailed { _, _ ->
                     view?.showLoginError()
-                    view?.toggleProgressBarPresence(false)
                 }
                 onCallFailure {
                     view?.showConnectionError()
-                    view?.toggleProgressBarPresence(false)
                 }
+                view?.toggleProgressBarPresence(false)
             }
         }
     }
