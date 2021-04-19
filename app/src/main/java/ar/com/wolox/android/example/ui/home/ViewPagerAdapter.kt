@@ -4,17 +4,20 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import ar.com.wolox.android.example.ui.home.news.NewsFragment
-import ar.com.wolox.android.example.ui.home.userProfile.UserProfileFragment
 
 class ViewPagerAdapter(fragment: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragment, lifecycle) {
 
-    override fun getItemCount(): Int = 2
+    private val fragments: ArrayList<Fragment> = arrayListOf()
+    override fun getItemCount() = fragments.size
+    // override fun getItemCount(): Int = FragmentManager
 
     override fun createFragment(position: Int): Fragment {
-        return when (position) {
-            0 -> NewsFragment.newInstance()
-            else -> UserProfileFragment.newInstance()
-        }
+        return fragments[position]
+    }
+
+    @SafeVarargs
+    fun addFragments(vararg fragment: Fragment) {
+        this.fragments.addAll(fragment)
+        notifyDataSetChanged()
     }
 }

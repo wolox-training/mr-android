@@ -26,7 +26,12 @@ class HomeFragment private constructor() : WolmoFragment<FragmentHomeBinding, Ho
 
     override fun init() {
         with(binding) {
-            homeAdapter = ViewPagerAdapter(requireActivity().supportFragmentManager, requireActivity().lifecycle)
+            homeAdapter = ViewPagerAdapter(requireActivity().supportFragmentManager, requireActivity().lifecycle).apply {
+                addFragments(
+                        newsFragment,
+                        userProfileFragment
+                )
+            }
             pager = viewPager
             pager.adapter = homeAdapter
             tabLayout.tabMode = TabLayout.MODE_FIXED
