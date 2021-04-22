@@ -2,15 +2,16 @@ package ar.com.wolox.android.example.model
 
 import android.content.res.Resources
 import androidx.annotation.DrawableRes
+import ar.com.wolox.android.R
 
 data class News(
-        val id: Int,
-        @DrawableRes
-        val image: Int?,
-        val title: String,
-        val description: String,
-        val duration: String,
-        val isLiked: Boolean
+    val id: Int,
+    @DrawableRes
+    val image: Int?,
+    val title: String,
+    val description: String,
+    val duration: String,
+    val isLiked: Boolean
 
 )
 
