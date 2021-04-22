@@ -54,7 +54,6 @@
             android:layout_gravity="bottom|end"
             android:layout_marginRight="@dimen/spacing_medium_extra"
             android:layout_marginBottom="@dimen/spacing_medium_extra"
-            android:elevation="2dp"
             android:src="@drawable/ic_edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
