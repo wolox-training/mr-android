@@ -7,6 +7,7 @@ import ar.com.wolox.android.example.ui.home.ViewPagerAdapter
 import ar.com.wolox.android.example.ui.home.news.NewsFragment
 import ar.com.wolox.android.example.ui.home.userProfile.UserProfileFragment
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import javax.inject.Inject
@@ -51,6 +52,9 @@ class HomeFragment private constructor() : WolmoFragment<FragmentHomeBinding, Ho
                     }
                 }
             }.attach()
+            fab.setOnClickListener { view ->
+                Snackbar.make(view, "Added a news", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+            }
         }
     }
 

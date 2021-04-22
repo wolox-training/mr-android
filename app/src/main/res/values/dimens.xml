@@ -46,4 +46,5 @@
     <dimen name="font_huge">24sp</dimen>
 
     <!-- Add your custom dimens here -->
+    <dimen name="max_news_description_width">250dp</dimen>
 </resources>
