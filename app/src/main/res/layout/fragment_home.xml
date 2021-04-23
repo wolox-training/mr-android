@@ -11,18 +11,18 @@
             android:id="@+id/woloxLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/wolox_logo"
             android:layout_marginTop="@dimen/spacing_medium_more"
             android:layout_marginRight="@dimen/spacing_medium_more"
+            android:src="@drawable/wolox_logo"
             app:layout_constraintEnd_toStartOf="@id/woloxLabel"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/woloxLabel"
             android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/spacing_medium_more"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/static_spacing_largest"
+            android:layout_marginTop="@dimen/spacing_medium_more"
             android:text="@string/wolox_label"
             app:layout_constraintBottom_toTopOf="@id/tabLayout"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,5 +47,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginRight="@dimen/spacing_medium_extra"
+            android:layout_marginBottom="@dimen/spacing_medium_extra"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

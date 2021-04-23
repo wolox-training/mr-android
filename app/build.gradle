@@ -99,6 +99,7 @@ buildscript {
     ext.androidx_recycler_version = '1.1.0'
     ext.androidx_material_version = '1.2.0-alpha03'
     ext.constraint_version = '2.0.0-beta4'
+    ext.swipe_refresh_version = '1.1.0'
     ext.dagger_version = '2.28.1'
     ext.wolmo_core_version = '4.1.1'
     ext.wolmo_networking_version = '4.0.1'
@@ -127,6 +128,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.recyclerview:recyclerview:$androidx_recycler_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh_version"
     implementation "com.google.android.material:material:$androidx_material_version"
 
     // Dagger

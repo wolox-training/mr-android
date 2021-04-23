@@ -11,9 +11,7 @@ class ViewPagerAdapter(fragment: FragmentManager, lifecycle: Lifecycle) : Fragme
 
     override fun getItemCount() = fragments.size
 
-    override fun createFragment(position: Int): Fragment {
-        return fragments[position]
-    }
+    override fun createFragment(position: Int): Fragment = fragments[position]
 
     @SafeVarargs
     fun addFragments(vararg fragment: Fragment) {
