@@ -1,5 +1,6 @@
 package ar.com.wolox.android.example.ui.login
 
+import androidx.core.util.PatternsCompat
 import ar.com.wolox.android.example.model.Login
 import ar.com.wolox.android.example.network.builder.networkRequest
 import ar.com.wolox.android.example.network.repository.UserRepository
@@ -34,7 +35,9 @@ class LoginPresenter @Inject constructor(
         if (email.isBlank()) {
             loginError = true
             view?.showEmptyEmailError()
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        }
+
+        if (!PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()) {
             loginError = true
             view?.showInvalidEmailError()
         }

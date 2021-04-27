@@ -5,7 +5,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.wolox.android.R
-import org.w3c.dom.Text
 
 class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val newsTitle: TextView = view.findViewById(R.id.newsTitle)
