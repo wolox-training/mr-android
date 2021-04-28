@@ -9,7 +9,7 @@ import ar.com.wolox.android.example.model.News
 class NewsAdapter(private val news: List<News>) : RecyclerView.Adapter<NewsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.view_new_item, parent, true)
+                .inflate(R.layout.view_new_item, parent, false)
         return NewsViewHolder(view)
     }
 

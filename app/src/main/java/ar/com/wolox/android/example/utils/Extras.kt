@@ -22,4 +22,14 @@ object Extras {
     object ViewPager {
         const val FAVOURITE_COLOR_KEY = "FAVOURITE_COLOR_KEY"
     }
+
+    object MockUser {
+        const val EMAIL = "susan.stevens38@example.com"
+        const val PASSWORD = "12345678"
+        const val INVALID_EMAIL = "invalidEmail"
+        const val INVALID_PASSWORD = ""
+        const val EMPTY_EMAIL = ""
+        const val WRONG_EMAIL = "wrong@email.com"
+        const val WRONG_PASSWORD = "invalidPassword"
+    }
 }
