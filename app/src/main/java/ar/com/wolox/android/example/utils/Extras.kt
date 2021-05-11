@@ -17,6 +17,7 @@ object Extras {
         const val ACCESS_TOKEN = "access_token"
         const val UID = "uid"
         const val CLIENT = "client"
+        const val ID = "id"
     }
 
     object ViewPager {

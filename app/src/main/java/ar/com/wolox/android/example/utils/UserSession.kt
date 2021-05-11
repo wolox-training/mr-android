@@ -67,4 +67,13 @@ class UserSession @Inject constructor(private val sharedPreferencesManager: Shar
 
     var isOngoingSession: Boolean? = false
         get() = !client.isNullOrEmpty() && !uid.isNullOrEmpty() && !accessToken.isNullOrEmpty()
+
+    var userId: String? = null
+        get() = field ?: sharedPreferencesManager[Extras.UserLogin.ID, null].also {
+            field = it
+        }
+        set(userId) {
+            field = userId
+            sharedPreferencesManager.store(Extras.UserLogin.ID, userId)
+        }
 }

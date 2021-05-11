@@ -45,7 +45,8 @@ class LoginPresenter @Inject constructor(
         if (!loginError) {
             view?.toggleProgressBarPresence(true)
             networkRequest(userRepository.loginUser(user)) {
-                onResponseSuccessful {
+                onResponseSuccessful { response ->
+                    userSession.userId = response?.user?.id.toString()
                     view?.logInUser()
                 }
                 onResponseFailed { _, _ ->

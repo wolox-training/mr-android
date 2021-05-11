@@ -30,9 +30,10 @@
     <string name="user_tab">Profile</string>
     <string name="wolox_label">Wolox</string>
     <string name="no_news_to_show">There are no news to show right now</string>
+    <string name="no_more_news_to_show">There are no more news to show right now</string>
+    <string name="get_news_error">Error in getting news</string>
+    <string name="no_connection_news">Internet connection required to show news</string>
 
     <!--News Mock -->
-    <string name='news_title'>Ali Connors</string>
-    <string name="news_description">I\'ll be in your neighborhood doing errands ...</string>
     <string name="news_time">15m</string>
 </resources>
