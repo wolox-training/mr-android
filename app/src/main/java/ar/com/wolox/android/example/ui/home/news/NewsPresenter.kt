@@ -10,7 +10,7 @@ import javax.inject.Inject
 class NewsPresenter @Inject constructor(private val userSession: UserSession, private val newsRepository: NewsRepository) : CoroutineBasePresenter<NewsView>() {
     override fun onViewAttached() {
         launch {
-            networkRequest(newsRepository.getNews(1)) {
+            networkRequest(newsRepository.getNews(FIRST_PAGE)) {
                 onResponseSuccessful { response ->
                     view?.showNews(response, userSession.userId?.toInt()!!)
                 }
@@ -25,7 +25,7 @@ class NewsPresenter @Inject constructor(private val userSession: UserSession, pr
     }
 
     fun onRefreshSwipe() = launch {
-        networkRequest(newsRepository.getNews(1)) {
+        networkRequest(newsRepository.getNews(FIRST_PAGE)) {
             onResponseSuccessful { response ->
                 view?.showNews(response, userSession.userId?.toInt()!!)
             }
@@ -54,5 +54,9 @@ class NewsPresenter @Inject constructor(private val userSession: UserSession, pr
             }
         }
         view?.toggleLoadingOff()
+    }
+
+    companion object {
+        private const val FIRST_PAGE = 1
     }
 }

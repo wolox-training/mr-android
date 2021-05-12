@@ -22,19 +22,18 @@ class NewsAdapter(private val news: ArrayList<News>, private val userId: Int) : 
         with(newsList.elementAt(position)) {
             holder.newsTitle.setTypeface(null, Typeface.BOLD)
             holder.newsTitle.text = commenter
-            if (comment.length > MAX_COMMENT_LENGTH) holder.newsDescription.text = """${comment.substring(0, MAX_COMMENT_LENGTH)} ..."""
-            else holder.newsDescription.text = comment
-            if (likes.contains(currentUserId)) holder.likeButton.setImageResource(R.drawable.ic_like_on)
-            else holder.likeButton.setImageResource((R.drawable.ic_like_off))
+            holder.newsDescription.text = comment
+            if (likes.contains(currentUserId)) {
+                holder.likeButton.setImageResource(R.drawable.ic_like_on)
+            }
+            else {
+                holder.likeButton.setImageResource((R.drawable.ic_like_off))
+            }
         }
     }
 
     fun appendNews(newNews: List<News>) {
         newsList.addAll(newNews)
         notifyDataSetChanged()
-    }
-
-    companion object {
-        private const val MAX_COMMENT_LENGTH = 80
     }
 }

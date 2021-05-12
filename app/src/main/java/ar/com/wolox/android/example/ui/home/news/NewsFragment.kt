@@ -7,6 +7,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import ar.com.wolox.android.R
 import ar.com.wolox.android.databinding.FragmentNewsBinding
 import ar.com.wolox.android.example.model.NewsPage
+import ar.com.wolox.android.example.utils.togglePresence
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
 import javax.inject.Inject
@@ -35,7 +36,6 @@ class NewsFragment @Inject constructor() : WolmoFragment<FragmentNewsBinding, Ne
                 presenter.onRefreshSwipe()
             })
             recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                val visibleThreshold = 15
                 var firstVisibleItem = 0
                 var visibleItemCount = 0
                 var totalItemCount = 0
@@ -47,7 +47,7 @@ class NewsFragment @Inject constructor() : WolmoFragment<FragmentNewsBinding, Ne
                     totalItemCount = layoutManager.itemCount
                     firstVisibleItem = layoutManager.findFirstVisibleItemPosition()
 
-                    if (totalItemCount - visibleItemCount <= firstVisibleItem + visibleThreshold) {
+                    if (totalItemCount - visibleItemCount <= firstVisibleItem + VISIBLE_NEWS_THRESHOLD) {
                         presenter.onScrolledToEnd(currentPage)
                     }
                 }
@@ -64,13 +64,14 @@ class NewsFragment @Inject constructor() : WolmoFragment<FragmentNewsBinding, Ne
             currentPage = response?.currentPage!!
             newsAdapter = response?.page?.let { NewsAdapter(it, userId) }
             recyclerView.adapter = newsAdapter
-            if (recyclerView.adapter != null) {
+            recyclerView.adapter.let {
                 if (recyclerView.adapter!!.itemCount > 0) {
-                    recyclerView.visibility = View.VISIBLE
-                    noNewsMessage.visibility = View.GONE
+                    recyclerView.togglePresence(true)
+                    noNewsMessage.togglePresence(false)
                 } else {
-                    recyclerView.visibility = View.GONE
-                    noNewsMessage.visibility = View.VISIBLE
+                    recyclerView.togglePresence(false)
+                    noNewsMessage.togglePresence(true)
+
                 }
             }
         }
@@ -97,5 +98,6 @@ class NewsFragment @Inject constructor() : WolmoFragment<FragmentNewsBinding, Ne
 
     companion object {
         fun newInstance() = NewsFragment()
+        private const val VISIBLE_NEWS_THRESHOLD = 15
     }
 }
