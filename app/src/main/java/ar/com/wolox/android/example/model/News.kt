@@ -1,179 +1,30 @@
 package ar.com.wolox.android.example.model
 
-import android.content.res.Resources
-import androidx.annotation.DrawableRes
-import ar.com.wolox.android.R
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+import java.util.Date
 
 data class News(
-    val id: Int,
-    @DrawableRes
-    val image: Int?,
-    val title: String,
-    val description: String,
-    val duration: String,
-    val isLiked: Boolean
+    @SerializedName("id") val id: Int,
+    @SerializedName("avatar") val avatar: String,
+    @SerializedName("commenter") val commenter: String,
+    @SerializedName("comment") val comment: String,
+    @SerializedName("date") val date: Date,
+    @SerializedName("likes") val likes: Array<Int>,
+    @SerializedName("created_at") val created_at: Date,
+    @SerializedName("updated_at") val updated_at: Date
 
-)
+) : Serializable
 
-fun newsList(resources: Resources): List<News> {
-    return listOf(News(
-            id = 1,
-            title = resources.getString(R.string.news_title),
-            image = R.drawable.ic_profile_on,
-            description = resources.getString(R.string.news_description),
-            duration = resources.getString(R.string.news_time),
-            isLiked = true
-    ),
-            News(
-                    id = 2,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = true
-            ),
-            News(
-                    id = 3,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 4,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 5,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = true
-            ),
-            News(
-                    id = 6,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = true
-            ),
-            News(
-                    id = 7,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = true
-            ),
-            News(
-                    id = 8,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = true
-            ),
-            News(
-                    id = 9,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = true
-            ),
-            News(
-                    id = 10,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 11,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 12,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 13,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 14,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 15,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 16,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 17,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 18,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 19,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ),
-            News(
-                    id = 20,
-                    title = resources.getString(R.string.news_title),
-                    image = R.drawable.ic_profile_on,
-                    description = resources.getString(R.string.news_description),
-                    duration = resources.getString(R.string.news_time),
-                    isLiked = false
-            ))
-}
+data class NewsPage(
+    @SerializedName("count") val count: Int,
+    @SerializedName("total_pages") val pages: Int,
+    @SerializedName("total_count") val totalCount: Int,
+    @SerializedName("current_page") val currentPage: Int,
+    @SerializedName("previous_page") val previousPage: Int?,
+    @SerializedName("next_page") val nextPage: Int?,
+    @SerializedName("next_page_url") val nextPageUrl: String,
+    @SerializedName("previous_page_url") val previousPageUrl: String,
+    val page: ArrayList<News>
+
+) : Serializable

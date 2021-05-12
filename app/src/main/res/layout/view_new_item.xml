@@ -18,7 +18,9 @@
         android:id="@+id/newsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_marginLeft="@dimen/spacing_medium_more"
+        android:layout_marginBottom="@dimen/spacing_tiny"
         app:layout_constraintStart_toEndOf="@id/newsImage"
         app:layout_constraintTop_toTopOf="parent" />
 
