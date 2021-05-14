@@ -51,6 +51,10 @@
             android:name=".example.ui.viewpager.ViewPagerActivity"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".example.ui.newsdetail.NewsDetailActivity"
+            android:screenOrientation="portrait"
+            />
+
     </application>
 
 </manifest>

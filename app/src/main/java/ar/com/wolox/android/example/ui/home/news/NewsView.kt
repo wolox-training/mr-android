@@ -1,5 +1,6 @@
 package ar.com.wolox.android.example.ui.home.news
 
+import ar.com.wolox.android.example.model.News
 import ar.com.wolox.android.example.model.NewsPage
 
 interface NewsView {
@@ -14,4 +15,6 @@ interface NewsView {
     fun appendNews(response: NewsPage?)
 
     fun showNoMoreNews()
+
+    fun goToNewsDetail(news: News)
 }

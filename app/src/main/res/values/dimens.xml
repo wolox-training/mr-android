@@ -47,4 +47,5 @@
 
     <!-- Add your custom dimens here -->
     <dimen name="max_news_description_width">250dp</dimen>
+    <dimen name="news_list_item_heigth">80dp </dimen>
 </resources>
