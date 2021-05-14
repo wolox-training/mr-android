@@ -1,5 +1,6 @@
 package ar.com.wolox.android.example.ui.newsdetail
 
+import ar.com.wolox.android.example.model.News
 import ar.com.wolox.android.example.network.builder.networkRequest
 import ar.com.wolox.android.example.network.repository.NewsRepository
 import ar.com.wolox.android.example.utils.UserSession
@@ -8,18 +9,20 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class NewsDetailPresenter @Inject constructor(private val userSession: UserSession, private val newsRepository: NewsRepository) : CoroutineBasePresenter<NewsDetailView>() {
+    private lateinit var newsDetail: News
+
     override fun onViewAttached() {
         view?.loadLikedButton(userSession.userId)
     }
 
-    fun toggleLike(newsId: Int, isPresent: Boolean) = launch {
+    fun setNews(news: News) {
+        newsDetail = news
+    }
+
+    fun toggleLike(newsId: Int, isLiked: Boolean) = launch {
         networkRequest(newsRepository.toggleLike(newsId)) {
             onResponseSuccessful { _ ->
-                if (isPresent) {
-                    view?.toggleLikeOff()
-                } else {
-                    view?.toggleLikeOn()
-                }
+                view?.toggleLiked(!isLiked)
             }
         }
     }

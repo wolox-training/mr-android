@@ -21,15 +21,26 @@
                 android:src="@drawable/background_news"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/backButtonImage"
+                android:layout_marginLeft="@dimen/spacing_medium_more"
+                android:layout_marginTop="@dimen/spacing_medium_more"
+                app:layout_constraintTop_toTopOf="@id/newsImage"
+                app:layout_constraintStart_toStartOf="@id/newsImage"
+                android:tint="@color/white"
+                android:src="@drawable/ic_back"/>
             <TextView
                 android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_medium_more"
+                android:layout_marginLeft="@dimen/spacing_medium"
                 android:layout_marginTop="@dimen/spacing_medium_more"
                 android:text="@string/back_to_post"
+
                 android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="@id/newsImage"
+                app:layout_constraintStart_toEndOf="@id/backButtonImage"
                 app:layout_constraintTop_toTopOf="@id/newsImage" />
 
             <TextView
