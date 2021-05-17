@@ -1,12 +1,12 @@
 package ar.com.wolox.android.example.ui.home.news
 
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import ar.com.wolox.android.R
 import ar.com.wolox.android.databinding.FragmentNewsBinding
+import ar.com.wolox.android.example.model.News
 import ar.com.wolox.android.example.model.NewsPage
+import ar.com.wolox.android.example.ui.newsdetail.NewsDetailActivity
 import ar.com.wolox.android.example.utils.togglePresence
 import ar.com.wolox.wolmo.core.fragment.WolmoFragment
 import ar.com.wolox.wolmo.core.util.ToastFactory
@@ -30,11 +30,16 @@ class NewsFragment @Inject constructor() : WolmoFragment<FragmentNewsBinding, Ne
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.onResumeReloadNews()
+    }
+
     override fun setListeners() {
         with(binding) {
-            swipeRefresh.setOnRefreshListener(OnRefreshListener {
+            swipeRefresh.setOnRefreshListener {
                 presenter.onRefreshSwipe()
-            })
+            }
             recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 var firstVisibleItem = 0
                 var visibleItemCount = 0
@@ -62,7 +67,7 @@ class NewsFragment @Inject constructor() : WolmoFragment<FragmentNewsBinding, Ne
     override fun showNews(response: NewsPage?, userId: Int) {
         with(binding) {
             currentPage = response?.currentPage!!
-            newsAdapter = response?.page?.let { NewsAdapter(it, userId) }
+            newsAdapter = response?.page?.let { NewsAdapter(it, userId, this@NewsFragment) }
             recyclerView.adapter = newsAdapter
             recyclerView.adapter.let {
                 if (recyclerView.adapter!!.itemCount > 0) {
@@ -71,7 +76,6 @@ class NewsFragment @Inject constructor() : WolmoFragment<FragmentNewsBinding, Ne
                 } else {
                     recyclerView.togglePresence(false)
                     noNewsMessage.togglePresence(true)
-
                 }
             }
         }
@@ -94,6 +98,10 @@ class NewsFragment @Inject constructor() : WolmoFragment<FragmentNewsBinding, Ne
 
     override fun showConnectionError() {
         toastFactory.show(R.string.no_connection_news)
+    }
+
+    override fun goToNewsDetail(news: News) {
+        NewsDetailActivity.start(requireContext(), news)
     }
 
     companion object {

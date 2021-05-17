@@ -56,6 +56,20 @@ class NewsPresenter @Inject constructor(private val userSession: UserSession, pr
         view?.toggleLoadingOff()
     }
 
+    fun onResumeReloadNews() = launch {
+        networkRequest(newsRepository.getNews(FIRST_PAGE)) {
+            onResponseSuccessful { response ->
+                view?.showNews(response, userSession.userId?.toInt()!!)
+            }
+            onResponseFailed { _, _ ->
+                view?.showGetNewsError()
+            }
+            onCallFailure {
+                view?.showConnectionError()
+            }
+        }
+    }
+
     companion object {
         private const val FIRST_PAGE = 1
     }

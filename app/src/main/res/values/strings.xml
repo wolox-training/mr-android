@@ -33,6 +33,7 @@
     <string name="no_more_news_to_show">There are no more news to show right now</string>
     <string name="get_news_error">Error in getting news</string>
     <string name="no_connection_news">Internet connection required to show news</string>
+    <string name="back_to_post">Post</string>
 
     <!--News Mock -->
     <string name="news_time">15m</string>

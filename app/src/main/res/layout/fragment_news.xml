@@ -29,8 +29,6 @@
             android:text="@string/no_news_to_show"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:maxLength="80"
-            android:ellipsize="end"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
